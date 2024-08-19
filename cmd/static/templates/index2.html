@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content = "ie=edge">
+    <title>Dropdown menu with search box | AICCRA-SenAdvice </title>
+    <script src="cmd/static/js/htmx.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="cmd/static/menu.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+</head>
+<body>
+    <div class="menu-wrapper">
+        <nav>
+            <label class="menu-icon"><i class="si-text-justify"></i></label>
+            <div class="content">
+            <div class="logo"><a href="#">AICCRA-SenAdvice</a></div>
+            <ul class="links">
+                <li><a href="#">Acceuil</a></li>
+                <li><a href="#">A propos</a></li>
+                <li>
+                    <a id="Advices" href="#">Conseils</a>
+                    <ul>
+                        <!--<li><a href="#">Agricultural advice</a></li>
+                        <li><a href="#">Livestock advice</a></li>-->
+                        <li><a href="/upload">Add advices</a></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <ul class="authentication">
+                <li><button class="signin-btn" id="in">Se connecter</button></li>
+                <li><button class="signup-btn" id="out">S'inscrire</button></li>
+           </ul>
+        </nav>
+    </div>
+    <div class="filters-wrappers">
+        <!-- Filters button -->
+        <button class="active" data-name = "all" >Touts les conseils</button>
+        <button data-name = "agro">Agriculture</button>
+        <button data-name = "livestock">Elevage</button>
+        <!--<button data-name = "Date">Date</button>-->
+        <div class="dropdown1">
+            <div class="select">
+                <span class="selected">Sélectionnez un mois</span>
+                <div class="caret"></div>
+            </div>
+            <ul class="choices">
+                <li class="isactive">Sélectionnez un mois</li>
+                <li>Janvier</li>
+                <li>Février</li>
+                <li>Mars</li>
+                <li>Avril</li>
+                <li>Mai</li>
+                <li>Juin</li>
+                <li>Juillet</li>
+                <li>Août</li>
+                <li>Septembre</li>
+                <li>Octobre</li>
+                <li>Novembre</li>
+                <li>Décembre</li>
+            </ul>
+        </div>
+        <div class="dropdown2">
+            <div class="select">
+                <span class="selected">Sélectionnez une année</span>
+                <div class="caret"></div>
+            </div>
+            <ul class="choices">
+                <li class="isactive">Sélectionnez une année</li>
+                <li>2022</li>
+                <li>2023</li>
+                <li>2024</li>
+                <li>2025</li>
+                <li>2026</li>
+            </ul>
+        </div>
+        <div class="dropdown3">
+            <div class="select">
+                <span class="selected">Sélectionnez un cluster</span>
+                <div class="caret"></div>
+            </div>
+            <ul class="choices">
+                <li class="isactive">Sélectionnez une cluster</li>
+                <li>Kaolack</li>
+                <li>Koumpentoum</li>
+                <li>Meouane</li>
+                <li>Thiel</li>
+                <li>Dagua-Birame</li>
+                <li>Dahra</li>
+                <li>Linguère</li>
+            </ul>
+        </div>
+         
+    </div>
+    <div class="advices-wrapper">
+        <div class="wrapper">
+            <div class="top-bar">
+                <i class="material-icons">upload</i>
+                <span>Conseils d'AICCRA</span>
+                <i class="material-icons">download</i>
+            </div> 
+            <div class="download">
+               
+                   
+                        <div id="co">
+                            <i class="material-icons">picture_as_pdf</i>
+                            <p>pdf</p>
+                        </div>
+                   
+                        <div>
+                            <i class="material-icons">audio_file</i>
+                            <p>audio</p>
+                        </div>
+                
+            </div>
+            <div class="img-area">
+                <img src="/static/images/music-1.jpeg" alt="">
+            </div>
+            
+            <div class="song-details">
+                <p class="name">Meouane conseils agricole</p>
+                <p class="date">22/04/2023</p>
+            </div>
+            <div class="progress-area">
+                <div class="progress-bar">
+                </div>
+                <div class="timer">
+                    <span class="current">0:00</span>
+                    <span class="duration">3:24</span>
+                </div>
+                <audio id="main-audio" src=""></audio>
+            </div>
+            <div class="controls">
+                <i id="repeat-plist" class="material-icons" title="Playlist looped">repeat</i>
+                <i id="prev" class="material-icons">skip_previous</i>
+                <div class="play-pause">
+                <i class="material-icons">play_arrow</i>   
+                </div>
+                <i id="next" class="material-icons">skip_next</i>
+                <i id="more-music" class="material-icons">queue_music</i>
+            </div>
+            <div class="music-list">
+                <div class="header">
+                    <div class="row">
+                        <i class="material-icons">queue_music</i>
+                        <span>Liste de conseils</span>  
+                    </div>
+                    <i id="close" class="material-icons">close</i>
+                </div>
+                <ul>
+    
+                </ul>
+            </div>
+        </div>
+        <div class="advices-list">
+            <div class="header">
+                <div class="row">
+                    <i class="material-icons">queue_music</i>
+                    <span>Liste de conseils</span>  
+                </div>
+            </div>
+            <ul>
+
+            </ul>
+        </div>
+    </div>
+    <!-- Pop up  Form for login or registration-->
+     <div class="blur-bg-overlay"></div>
+     <div class="form-popup">
+        <span class="close-btn material-symbols-rounded">close</span>
+        <div class="form-box signin ">
+            <div class="form-details">
+                <h2>Bienvenue</h2>
+                <p>Connecter vous avec vos informations personnelles pour rester connecter avec nous</p>
+            </div>
+            <div class="form-content">
+                <h2>SE CONNECTER</h2>
+                <form hx-post="/api/v1/login">
+                    <div class="input-field">
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Mot de passe</label>
+                    </div>
+                    <a href="#" class="forgot-pass">Mot de passe oublié?</a>
+                    <button type="submit">Se connecter</button>
+                </form>
+                <div class="bottom-link">
+                    Pas de compte?
+                    <a href="#" id="signup-link">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-box signup">
+            <div class="form-details">
+                <h2>Créer un compte</h2>
+                <p>Pour avoir accès au conseils d'AICCRA, Veuillez vous inscrire en utilisant vos informations personnelles</p>
+            </div>
+            <div class="form-content">
+                <h2>S'INSCRIRE</h2>
+                <form hx-post="/api/v1/register">
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Saisir votre prénom</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Saisir votre nom</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Saisir le nom de votre coopérative</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="email" required>
+                        <label>Saisir votre Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Créer un mot de passe</label>
+                    </div>
+                    <div class="policy-text">
+                        <input type="checkbox" id="policy">
+                        <label for="policy">
+                            J'accepte
+                            <a href="#">Les termes et conditions</a>
+                        </label>
+                    </div>
+                    <button type="submit">S'inscrire'</button>
+                </form>
+                <div class="bottom-link">
+                    Vous avez déjà un compte?
+                    <a href="#" id="signin-link">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+
+     </div>
+
+
+
+    <script src="/cmd/static/js/music-list.js"></script>
+    <script src="/cmd/static/js/script.js"></script>
+    <script src="/cmd/static/js/register.js"></script>
+    <script src="/cmd/static/js/dropdown.js"></script>
+    
+
+
+</body>
+</html>
